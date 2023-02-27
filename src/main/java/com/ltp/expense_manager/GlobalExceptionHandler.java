@@ -32,8 +32,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
     //In case Expense/Person doesn't exist
     @ExceptionHandler({ExpenseNotFoundException.class,PersonNotFoundException.class})
-    public ResponseEntity<Object> handleResourceNotFoundException(ExpenseNotFoundException ex) {
-        ErrorResponse error = new ErrorResponse(Arrays.asList(ex.getLocalizedMessage()));
+    public ResponseEntity<Object> handleResourceNotFoundException(RuntimeException ex) {
+        ErrorResponse error = new ErrorResponse(Arrays.asList(ex.getMessage()));
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
     //In case the Entity to be deleted is not present . 

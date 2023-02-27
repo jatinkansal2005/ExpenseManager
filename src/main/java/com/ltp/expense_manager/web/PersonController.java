@@ -23,7 +23,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/person")
-public class UserController {
+public class PersonController {
     @Autowired
     PersonService personService;
 
@@ -41,7 +41,8 @@ public class UserController {
         return new ResponseEntity<>(personService.getPerson(id), HttpStatus.OK);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Person>updatePerson(@RequestBody Person person, @PathVariable Long id){
+    public ResponseEntity<Person>updatePerson(@RequestBody @Valid Person person, @PathVariable Long id){
         return new ResponseEntity<>(personService.updatePerson(id, person), HttpStatus.OK);
     }
+
 }

@@ -38,7 +38,6 @@ public class Person {
     private String password;
 
     @NonNull
-    @NotBlank(message = "Age Can't be Blank")
     @Column(name = "age", nullable = false)
     private Long age;
 }
