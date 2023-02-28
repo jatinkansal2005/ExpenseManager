@@ -27,20 +27,20 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
-    @PostMapping
+    @PostMapping("/addPerson")
     public ResponseEntity<Person>savePerson(@RequestBody @Valid Person person){
         return new ResponseEntity<>(personService.savePerson(person), HttpStatus.CREATED);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletePerson/{id}")
     public ResponseEntity<HttpStatus>deletePerson(@PathVariable Long id){
         personService.deletePerson(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/getPerson/{id}")
     public ResponseEntity<Person>getPerson(@PathVariable Long id){
         return new ResponseEntity<>(personService.getPerson(id), HttpStatus.OK);
     }
-    @PutMapping("/{id}")
+    @PutMapping("/updatePerson/{id}")
     public ResponseEntity<Person>updatePerson(@RequestBody @Valid Person person, @PathVariable Long id){
         return new ResponseEntity<>(personService.updatePerson(id, person), HttpStatus.OK);
     }

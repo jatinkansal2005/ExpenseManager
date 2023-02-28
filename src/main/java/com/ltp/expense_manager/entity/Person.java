@@ -2,6 +2,9 @@ package com.ltp.expense_manager.entity;
 
 
 
+import com.ltp.expense_manager.validation.Age;
+import com.ltp.expense_manager.validation.Email;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,15 +32,18 @@ public class Person {
 
     @NonNull
     @NotBlank(message = "EmailId Can't be Blank")
+    @Email
     @Column(name = "email_id",nullable = false)
     private String emailId;
-
+    
     @NonNull
     @NotBlank(message = "Password Can't be Blank")
     @Column(name = "password", nullable = false)
     private String password;
 
     @NonNull
+    @NotBlank(message = "Age Can't be Blank")
+    @Age
     @Column(name = "age", nullable = false)
-    private Long age;
+    private String age;
 }
