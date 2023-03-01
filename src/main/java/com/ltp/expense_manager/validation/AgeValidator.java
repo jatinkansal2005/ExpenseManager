@@ -10,7 +10,7 @@ public class AgeValidator implements ConstraintValidator<Age,String>{
     public boolean isValid(String value, ConstraintValidatorContext context){
         try {
             int intValue = Integer.parseInt(value);
-            return true;
+            return intValue>=0;
         } catch (NumberFormatException e) {
             return false;
         }
