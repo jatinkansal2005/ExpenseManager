@@ -7,13 +7,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Past;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "expense")
 @RequiredArgsConstructor
@@ -40,36 +46,8 @@ public class Expense {
     @Column(name = "type")
     String type;
 
-    public Long getExpenseId() {
-        return this.expenseId;
-    }
-
-    public void setExpenseId(Long expenseId) {
-        this.expenseId = expenseId;
-    }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Date getAmountDate() {
-        return this.amountDate;
-    }
-
-    public void setAmountDate(Date amountDate) {
-        this.amountDate = amountDate;
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
+    private Person person;
 
 }
