@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,21 +34,21 @@ public class ExpenseController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/deleteExpense")
-    public ResponseEntity<HttpStatus> deleteExpense(@RequestParam Long id) {
+    @DeleteMapping("/deleteExpense/{id}")
+    public ResponseEntity<HttpStatus> deleteExpense(@PathVariable Long id) {
 
         expenseService.deleteExpense(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("/updateExpense")
-    public ResponseEntity<Expense> updateExpense(@RequestBody String title, @RequestParam Long id) {
+    @PutMapping("/updateExpense/{id}")
+    public ResponseEntity<Expense> updateExpense(@RequestBody String title, @PathVariable Long id) {
 
         return new ResponseEntity<>(expenseService.updateExpense(title, id), HttpStatus.OK);
     }
 
-    @GetMapping("/getExpense")
-    public ResponseEntity<Expense> getExpense(@RequestParam Long id) {
+    @GetMapping("/getExpense/{id}")
+    public ResponseEntity<Expense> getExpense(@PathVariable Long id) {
 
         return new ResponseEntity<>(expenseService.getExpense(id), HttpStatus.OK);
     }

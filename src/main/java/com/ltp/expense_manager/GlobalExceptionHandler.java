@@ -17,10 +17,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.ltp.expense_manager.exception.ErrorResponse;
 import com.ltp.expense_manager.exception.ExpenseNotFoundException;
+import com.ltp.expense_manager.exception.PersonNotFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-
+    
+    //In case arguments are not valid
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
             HttpHeaders headers, HttpStatusCode status, WebRequest request) {
@@ -28,13 +30,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         ex.getBindingResult().getAllErrors().forEach((error) -> errors.add(error.getDefaultMessage()));
         return new ResponseEntity<>(new ErrorResponse(errors), HttpStatus.BAD_REQUEST);
     }
-
-    @ExceptionHandler(ExpenseNotFoundException.class)
-    public ResponseEntity<Object> handleExpenseNotFoundException(ExpenseNotFoundException ex) {
-        ErrorResponse error = new ErrorResponse(Arrays.asList(ex.getLocalizedMessage()));
+    //In case Expense/Person doesn't exist
+    @ExceptionHandler({ExpenseNotFoundException.class,PersonNotFoundException.class})
+    public ResponseEntity<Object> handleResourceNotFoundException(RuntimeException ex) {
+        ErrorResponse error = new ErrorResponse(Arrays.asList(ex.getMessage()));
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
-
+    //In case the Entity to be deleted is not present . 
     @ExceptionHandler(EmptyResultDataAccessException.class)
     public ResponseEntity<Object> handleDataAccessException(EmptyResultDataAccessException ex) {
         ErrorResponse errorResponse = new ErrorResponse(Arrays.asList("Cannot delete non-existing resource"));
