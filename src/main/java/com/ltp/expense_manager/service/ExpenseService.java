@@ -6,7 +6,7 @@ import com.ltp.expense_manager.entity.Expense;
 
 public interface ExpenseService {
 
-    public void addExpense(Expense expense);
+    public void addExpense(Expense expense, Long personId);
 
     public void deleteExpense(Long id);
 
@@ -14,5 +14,5 @@ public interface ExpenseService {
 
     public Expense getExpense(Long id);
 
-    public List<Expense> getExpenses();
+    public List<Expense> getExpenses(Long personId);
 }

@@ -6,8 +6,11 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.ltp.expense_manager.entity.Expense;
+import com.ltp.expense_manager.entity.Person;
 import com.ltp.expense_manager.exception.ExpenseNotFoundException;
+import com.ltp.expense_manager.exception.PersonNotFoundException;
 import com.ltp.expense_manager.repository.ExpenseRepository;
+import com.ltp.expense_manager.repository.PersonRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -16,9 +19,12 @@ import lombok.AllArgsConstructor;
 public class ExpenseServiceImpl implements ExpenseService {
 
     ExpenseRepository expenseRepository;
+    PersonRepository personRepository;
 
     @Override
-    public void addExpense(Expense expense) {
+    public void addExpense(Expense expense, Long personId) {
+        Person person = PersonServiceImpl.unwrapPerson(personRepository.findById(personId), personId);
+        expense.setPerson(person);
         expenseRepository.save(expense);
     }
 
@@ -40,11 +46,15 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public List<Expense> getExpenses() {
-        return (List<Expense>) expenseRepository.findAll();
+    public List<Expense> getExpenses(Long personId) {
+        Optional<List<Expense> > expenses = expenseRepository.findByPersonId(personId);
+        if(expenses.isPresent()) {
+            return expenses.get();
+        }
+        throw new PersonNotFoundException(personId);
     }
 
-    public Expense unwrapExpense(Optional<Expense> expense, Long id) {
+    public static Expense unwrapExpense(Optional<Expense> expense, Long id) {
         if (!expense.isPresent())
             throw new ExpenseNotFoundException(id);
         return expense.get();

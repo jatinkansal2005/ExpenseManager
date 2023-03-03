@@ -2,9 +2,13 @@ package com.ltp.expense_manager.entity;
 
 
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ltp.expense_manager.validation.Age;
 import com.ltp.expense_manager.validation.Email;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 @Getter
 @Setter
@@ -33,7 +38,7 @@ public class Person {
     @NonNull
     @NotBlank(message = "EmailId Can't be Blank")
     @Email
-    @Column(name = "email_id",nullable = false)
+    @Column(name = "email_id",nullable = false, unique = true)
     private String emailId;
     
     @NonNull
@@ -46,4 +51,8 @@ public class Person {
     @Age
     @Column(name = "age", nullable = false)
     private String age;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
+    List<Expense> expenses;
 }

@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ltp.expense_manager.entity.Expense;
@@ -27,10 +26,10 @@ public class ExpenseController {
 
     ExpenseService expenseService;
 
-    @PostMapping("/addExpense")
-    public ResponseEntity<HttpStatus> addExpense(@RequestBody @Valid Expense expense) {
+    @PostMapping("/addExpense/{personId}")
+    public ResponseEntity<HttpStatus> addExpense(@RequestBody @Valid Expense expense, @PathVariable Long personId) {
 
-        expenseService.addExpense(expense);
+        expenseService.addExpense(expense, personId);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
@@ -53,9 +52,9 @@ public class ExpenseController {
         return new ResponseEntity<>(expenseService.getExpense(id), HttpStatus.OK);
     }
 
-    @GetMapping("/getExpenses")
-    public ResponseEntity<List<Expense>> getExpenses() {
+    @GetMapping("/getExpenses/{personId}")
+    public ResponseEntity<List<Expense>> getExpenses(@PathVariable Long personId) {
 
-        return new ResponseEntity<>(expenseService.getExpenses(), HttpStatus.OK);
+        return new ResponseEntity<>(expenseService.getExpenses(personId), HttpStatus.OK);
     }
 }
