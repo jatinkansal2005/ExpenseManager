@@ -1,0 +1,73 @@
+Date : 2023-03-01 19:29:16
+Directory : /Users/krishanukashyap/Documents/ExpenseManager
+Total : 24 files,  617 codes, 56 comments, 191 blanks, all 864 lines
+
+Languages
++-----------------+------------+------------+------------+------------+------------+
+| language        | files      | code       | comment    | blank      | total      |
++-----------------+------------+------------+------------+------------+------------+
+| Java            |         20 |        444 |          5 |        150 |        599 |
+| Batch           |          1 |        102 |         51 |         36 |        189 |
+| XML             |          1 |         66 |          0 |          4 |         70 |
+| Java Properties |          2 |          5 |          0 |          1 |          6 |
++-----------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                          | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                             |         24 |        617 |         56 |        191 |        864 |
+| . (Files)                                                                                                                     |          2 |        168 |         51 |         40 |        259 |
+| .mvn                                                                                                                          |          1 |          2 |          0 |          1 |          3 |
+| .mvn/wrapper                                                                                                                  |          1 |          2 |          0 |          1 |          3 |
+| src                                                                                                                           |         21 |        447 |          5 |        150 |        602 |
+| src/main                                                                                                                      |         20 |        438 |          5 |        145 |        588 |
+| src/main/java                                                                                                                 |         19 |        435 |          5 |        145 |        585 |
+| src/main/java/com                                                                                                             |         19 |        435 |          5 |        145 |        585 |
+| src/main/java/com/ltp                                                                                                         |         19 |        435 |          5 |        145 |        585 |
+| src/main/java/com/ltp/expense_manager                                                                                         |         19 |        435 |          5 |        145 |        585 |
+| src/main/java/com/ltp/expense_manager (Files)                                                                                 |          2 |         46 |          3 |         12 |         61 |
+| src/main/java/com/ltp/expense_manager/entity                                                                                  |          2 |        100 |          0 |         26 |        126 |
+| src/main/java/com/ltp/expense_manager/exception                                                                               |          3 |         37 |          0 |         16 |         53 |
+| src/main/java/com/ltp/expense_manager/repository                                                                              |          2 |         10 |          0 |         10 |         20 |
+| src/main/java/com/ltp/expense_manager/service                                                                                 |          4 |         96 |          2 |         31 |        129 |
+| src/main/java/com/ltp/expense_manager/validation                                                                              |          4 |         61 |          0 |         24 |         85 |
+| src/main/java/com/ltp/expense_manager/web                                                                                     |          2 |         85 |          0 |         26 |        111 |
+| src/main/resources                                                                                                            |          1 |          3 |          0 |          0 |          3 |
+| src/test                                                                                                                      |          1 |          9 |          0 |          5 |         14 |
+| src/test/java                                                                                                                 |          1 |          9 |          0 |          5 |         14 |
+| src/test/java/com                                                                                                             |          1 |          9 |          0 |          5 |         14 |
+| src/test/java/com/ltp                                                                                                         |          1 |          9 |          0 |          5 |         14 |
+| src/test/java/com/ltp/expense_manager                                                                                         |          1 |          9 |          0 |          5 |         14 |
++-------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------------------------+-----------------+------------+------------+------------+------------+
+| filename                                                                                                                      | language        | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------------------------+-----------------+------------+------------+------------+------------+
+| /Users/krishanukashyap/Documents/ExpenseManager/.mvn/wrapper/maven-wrapper.properties                                         | Java Properties |          2 |          0 |          1 |          3 |
+| /Users/krishanukashyap/Documents/ExpenseManager/mvnw.cmd                                                                      | Batch           |        102 |         51 |         36 |        189 |
+| /Users/krishanukashyap/Documents/ExpenseManager/pom.xml                                                                       | XML             |         66 |          0 |          4 |         70 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/ExpenseManagerApplication.java          | Java            |          9 |          0 |          5 |         14 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/GlobalExceptionHandler.java             | Java            |         37 |          3 |          7 |         47 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/entity/Expense.java                     | Java            |         59 |          0 |         17 |         76 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/entity/Person.java                      | Java            |         41 |          0 |          9 |         50 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/exception/ErrorResponse.java            | Java            |         25 |          0 |         11 |         36 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/exception/ExpenseNotFoundException.java | Java            |          6 |          0 |          3 |          9 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/exception/PersonNotFoundException.java  | Java            |          6 |          0 |          2 |          8 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/repository/ExpenseRepository.java       | Java            |          5 |          0 |          5 |         10 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/repository/PersonRepository.java        | Java            |          5 |          0 |          5 |         10 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/service/ExpenseService.java             | Java            |         10 |          0 |          9 |         19 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/service/ExpenseServiceImpl.java         | Java            |         40 |          0 |         13 |         53 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/service/PersonService.java              | Java            |          8 |          0 |          1 |          9 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/service/PersonServiceImpl.java          | Java            |         38 |          2 |          8 |         48 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/validation/Age.java                     | Java            |         15 |          0 |          6 |         21 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/validation/AgeValidator.java            | Java            |         14 |          0 |          5 |         19 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/validation/Email.java                   | Java            |         15 |          0 |          6 |         21 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/validation/EmailValidator.java          | Java            |         17 |          0 |          7 |         24 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/web/ExpenseController.java              | Java            |         45 |          0 |         17 |         62 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/java/com/ltp/expense_manager/web/PersonController.java               | Java            |         40 |          0 |          9 |         49 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/main/resources/application.properties                                     | Java Properties |          3 |          0 |          0 |          3 |
+| /Users/krishanukashyap/Documents/ExpenseManager/src/test/java/com/ltp/expense_manager/ExpenseManagerApplicationTests.java     | Java            |          9 |          0 |          5 |         14 |
+| Total                                                                                                                         |                 |        617 |         56 |        191 |        864 |
++-------------------------------------------------------------------------------------------------------------------------------+-----------------+------------+------------+------------+------------+

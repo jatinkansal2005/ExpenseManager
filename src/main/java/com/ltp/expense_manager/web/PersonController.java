@@ -27,7 +27,7 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
-    @PostMapping("/addPerson")
+    @PostMapping("/register")
     public ResponseEntity<Person>savePerson(@RequestBody @Valid Person person){
         return new ResponseEntity<>(personService.savePerson(person), HttpStatus.CREATED);
     }
