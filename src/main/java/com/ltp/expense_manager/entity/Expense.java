@@ -2,6 +2,9 @@ package com.ltp.expense_manager.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ltp.expense_manager.validation.Amount;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,9 +24,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "expense")
 @RequiredArgsConstructor
 @NoArgsConstructor
+@Table(name = "expense")
 public class Expense {
 
     @Id
@@ -42,10 +45,16 @@ public class Expense {
     Date amountDate;
 
     @NonNull
+    @Amount
+    @Column(name = "amount")
+    String amount;
+
+    @NonNull
     @NotBlank(message = "Expense must have a type")
     @Column(name = "type")
     String type;
 
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person person;

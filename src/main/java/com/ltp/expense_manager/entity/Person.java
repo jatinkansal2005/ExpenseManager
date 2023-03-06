@@ -18,12 +18,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.*;
+
 @Getter
 @Setter
 @RequiredArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Person")
+@Table(name = "person")
 public class Person {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
