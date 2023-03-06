@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ltp.expense_manager.entity.Expense;
 import com.ltp.expense_manager.entity.Person;
-import com.ltp.expense_manager.exception.ExpenseNotFoundException;
-import com.ltp.expense_manager.exception.PersonNotFoundException;
+import com.ltp.expense_manager.exception.EntityNotFoundException;
 import com.ltp.expense_manager.repository.ExpenseRepository;
 import com.ltp.expense_manager.repository.PersonRepository;
 
@@ -51,12 +50,12 @@ public class ExpenseServiceImpl implements ExpenseService {
         if(expenses.isPresent()) {
             return expenses.get();
         }
-        throw new PersonNotFoundException(personId);
+        throw new EntityNotFoundException(personId, Person.class);
     }
 
     public static Expense unwrapExpense(Optional<Expense> expense, Long id) {
         if (!expense.isPresent())
-            throw new ExpenseNotFoundException(id);
+            throw new EntityNotFoundException(id, Expense.class);
         return expense.get();
     }
 }

@@ -10,4 +10,6 @@ public interface PersonService {
     public Person getPerson(Long id);
 
     public Person updatePerson(Long id, Person newPerson);
+
+    public Person getPerson(String emailId);
 }
