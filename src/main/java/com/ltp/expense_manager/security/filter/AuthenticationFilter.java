@@ -2,6 +2,8 @@ package com.ltp.expense_manager.security.filter;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ltp.expense_manager.entity.Person;
 import com.ltp.expense_manager.security.SecurityConstants;
 import com.ltp.expense_manager.security.manager.CustomAuthenticationManager;
+import com.ltp.expense_manager.service.PersonService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -26,6 +29,7 @@ import lombok.AllArgsConstructor;
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private CustomAuthenticationManager authenticationManager;
+    private PersonService personService;
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -48,11 +52,16 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+        Person person = personService.getPerson(authResult.getName());
         String token = JWT.create()
             .withSubject(authResult.getName())
             .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.TOKEN_EXPIRATION))
             .sign(Algorithm.HMAC512(SecurityConstants.SECRET_KEY));
         response.addHeader(SecurityConstants.AUTHORIZATION, SecurityConstants.BEARER + token);
+        Map<String, Object> responseBody = new HashMap<>();
+        responseBody.put("expiresIn", SecurityConstants.TOKEN_EXPIRATION);
+        responseBody.put("personId", person.getId());
+        new ObjectMapper().writeValue(response.getWriter(), responseBody);
     }
 
 
