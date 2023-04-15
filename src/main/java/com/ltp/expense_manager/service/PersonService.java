@@ -12,4 +12,6 @@ public interface PersonService {
     public Person updatePerson(Long id, Person newPerson);
 
     public Person getPerson(String emailId);
+
+    public boolean isValid(String emailId, Long personId);
 }

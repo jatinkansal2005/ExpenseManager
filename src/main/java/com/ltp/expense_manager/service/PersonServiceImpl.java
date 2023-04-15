@@ -65,4 +65,10 @@ public class PersonServiceImpl implements PersonService {
         }
         throw new EntityNotFoundException(404L,Person.class);
     }
+
+    @Override
+    public boolean isValid(String emailId, Long personId) {
+        Person person = getPerson(emailId);
+        return person.getId() == personId;
+    }
 }
