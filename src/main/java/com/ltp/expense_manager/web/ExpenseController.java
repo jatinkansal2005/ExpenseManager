@@ -32,12 +32,12 @@ public class ExpenseController {
     PersonService personService;
 
     @PostMapping("/addExpense/{personId}")
-    public ResponseEntity<HttpStatus> addExpense(@RequestBody @Valid Expense expense, @PathVariable Long personId, Principal principal) {
+    public ResponseEntity<Expense> addExpense(@RequestBody @Valid Expense expense, @PathVariable Long personId, Principal principal) {
         if (!personService.isValid(principal.getName(), personId)) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         expenseService.addExpense(expense, personId);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(expense,HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deleteExpense/{id}")
