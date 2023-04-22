@@ -49,10 +49,10 @@ public class Expense {
     @Column(name = "amount")
     String amount;
 
-    @NonNull
-    @NotBlank(message = "Expense must have a type")
-    @Column(name = "type")
-    String type;
+    // @NonNull
+    // @NotBlank(message = "Expense must have a type")
+    // @Column(name = "type")
+    // String type;
 
     @JsonIgnore
     @ManyToOne(optional = false)
