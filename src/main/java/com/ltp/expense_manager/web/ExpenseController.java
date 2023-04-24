@@ -48,9 +48,9 @@ public class ExpenseController {
     }
 
     @PutMapping("/updateExpense/{id}")
-    public ResponseEntity<Expense> updateExpense(@RequestBody String title, @PathVariable Long id) {
+    public ResponseEntity<Expense> updateExpense(@RequestBody Expense expense, @PathVariable Long id) {
 
-        return new ResponseEntity<>(expenseService.updateExpense(title, id), HttpStatus.OK);
+        return new ResponseEntity<>(expenseService.updateExpense(expense, id), HttpStatus.OK);
     }
 
     @GetMapping("/getExpense/{id}")

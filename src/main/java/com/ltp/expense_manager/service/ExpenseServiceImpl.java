@@ -33,10 +33,12 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public Expense updateExpense(String title, Long id) {
-        Expense expense = unwrapExpense(expenseRepository.findById(id), id);
-        expense.setTitle(title);
-        return expenseRepository.save(expense);
+    public Expense updateExpense(Expense expense, Long id) {
+        Expense validExpense = unwrapExpense(expenseRepository.findById(id), id); 
+        validExpense.setTitle(expense.getTitle());
+        validExpense.setAmount(expense.getAmount());
+        validExpense.setAmountDate(expense.getAmountDate());
+        return expenseRepository.save(validExpense);
     }
 
     @Override

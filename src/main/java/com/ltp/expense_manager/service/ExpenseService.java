@@ -10,7 +10,7 @@ public interface ExpenseService {
 
     public void deleteExpense(Long id);
 
-    public Expense updateExpense(String title, Long id);
+    public Expense updateExpense(Expense expense, Long id);
 
     public Expense getExpense(Long id);
 
