@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -30,6 +31,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private CustomAuthenticationManager authenticationManager;
     private PersonService personService;
+    private Environment env;
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -56,7 +58,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String token = JWT.create()
             .withSubject(authResult.getName())
             .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.TOKEN_EXPIRATION))
-            .sign(Algorithm.HMAC512(SecurityConstants.SECRET_KEY));
+            .sign(Algorithm.HMAC512(env.getProperty("SECRET_KEY")));
         response.addHeader(SecurityConstants.AUTHORIZATION, SecurityConstants.BEARER + token);
         Map<String, Object> responseBody = new HashMap<>();
         responseBody.put("expiresIn", SecurityConstants.TOKEN_EXPIRATION);
