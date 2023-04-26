@@ -2,6 +2,7 @@ package com.ltp.expense_manager.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,6 +29,7 @@ public class SecurityConfig {
 
     private final CustomAuthenticationManager customAuthenticationManager;
     private final PersonService personService;
+    private Environment env;
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
@@ -45,7 +47,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager, personService);
+        AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager, personService,env);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
             http.cors().and()
                 .headers().frameOptions().disable()
