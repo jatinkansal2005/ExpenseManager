@@ -23,7 +23,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3000000)
+@CrossOrigin(origins = "https://expenseo.vercel.app", maxAge = 3000000)
 @RequestMapping("/person")
 public class PersonController {
     @Autowired

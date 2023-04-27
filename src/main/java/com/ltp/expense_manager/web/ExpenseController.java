@@ -24,7 +24,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "https://expenseo.vercel.app")
 @RequestMapping("/expenses")
 public class ExpenseController {
 
